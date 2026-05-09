@@ -1,6 +1,6 @@
 --!nonstrict
 
-local r_s: ReplicatedStorage = game:GetService("RunService")
+local r_s: RunService = game:GetService("RunService")
 
 local last_frame = {}
 local max_frame: number = 60
