@@ -22,7 +22,7 @@ r_s.Heartbeat:Connect(function(dt)
 	end
 end)
 
-random_event.OnServerEvent:Connect(function(p)
+random_event.OnServerEvent:Connect(function(p: Player)
 
 	local p_id: number = p.UserId
 
