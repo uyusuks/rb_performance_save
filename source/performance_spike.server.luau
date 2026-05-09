@@ -1,3 +1,5 @@
+--!nonstrict
+
 local r_s: ReplicatedStorage = game:GetService("RunService")
 
 local last_frame = {}
