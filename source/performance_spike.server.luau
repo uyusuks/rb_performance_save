@@ -1,9 +1,9 @@
---!nonstrict
+--!strict
 
-local r_s: RunService = game:GetService("RunService")
+local r_s = game:GetService("RunService") :: RunService
 
 local last_frame = {}
-local max_frame: number = 60
+local max_frame = 60 :: number
 
 r_s.Heartbeat:Connect(function(dt)
 
@@ -11,11 +11,11 @@ r_s.Heartbeat:Connect(function(dt)
 
 	table.insert(last_frame, dt)
 
-	local sum: number = 0
+	local sum = 0 :: number
 
 	for _, per: number in pairs(last_frame) do sum += per end
 
-	local avg: number = (sum / #last_frame) * 1.5
+	local avg = (sum / #last_frame) * 1.5 :: number
 
 	if avg > .05 then
 
