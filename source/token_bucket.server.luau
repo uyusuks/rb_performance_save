@@ -1,22 +1,22 @@
---!nonstrict
+--!strict
 
-local rs: ReplicatedStorage = game:GetService("ReplicatedStorage")
-local r_s: RunService = game:GetService("RunService")
+local rs = game:GetService("ReplicatedStorage") :: ReplicatedStorage
+local r_s = game:GetService("RunService") :: RunService
 
-local random_event: RemoteEvent = rs:WaitForChild("random")
+local random_event = rs:WaitForChild("random") :: RemoteEvent
 
 local token = {}
 
-local max_token: number = 20
-local per_fill: number = 5
+local max_token = 20 :: number
+local per_fill = 5 :: number
 
 r_s.Heartbeat:Connect(function(dt)
 
-	for p_id, current_token: number in pairs(token) do
+	for p_id, current_token: any in pairs(token) do
 
 		if not token[p_id] then return end
 
-		local token_count: number = token[p_id]
+		local token_count = token[p_id] :: number
 
 		token[p_id] = math.min(max_token, token_count + per_fill * dt)
 	end
@@ -24,9 +24,9 @@ end)
 
 random_event.OnServerEvent:Connect(function(p: Player)
 
-	local p_id: number = p.UserId
+	local p_id = p.UserId :: number
 
-	local token_count: number = token[p_id] or max_token
+	local token_count = token[p_id] or max_token :: number
 
 	token[p_id] = token_count
 
